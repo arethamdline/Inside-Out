@@ -124,6 +124,13 @@
       },
       "url": "https://packages.unity.cn"
     },
+    "com.unity.nuget.newtonsoft-json": {
+      "version": "3.2.1",
+      "depth": 1,
+      "source": "registry",
+      "dependencies": {},
+      "url": "https://packages.unity.cn"
+    },
     "com.unity.profiling.core": {
       "version": "1.0.2",
       "depth": 1,
@@ -252,6 +259,24 @@
       "source": "git",
       "dependencies": {},
       "hash": "529a628a915a97799e89e061af9cb7c71407124d"
+    },
+    "link.neocortex.ollama": {
+      "version": "https://github.com/neocortex-link/neocortex-ollama-support.git",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {
+        "com.unity.nuget.newtonsoft-json": "3.2.1"
+      },
+      "hash": "e717282cdf6da9246e8d3a959b4c053cf5c4a2bd"
+    },
+    "link.neocortex.sdk": {
+      "version": "https://github.com/neocortex-link/neocortex-unity-sdk.git",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {
+        "com.unity.nuget.newtonsoft-json": "3.2.1"
+      },
+      "hash": "9a000b97a2780dcc698574665f3b5b7ddf31f40d"
     },
     "com.unity.modules.ai": {
       "version": "1.0.0",

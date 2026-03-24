@@ -4394,7 +4394,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7168dbdda8fed441f98a08eb18d1aa3f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneName: Fear
 --- !u!1 &599089272
 GameObject:
   m_ObjectHideFlags: 0
@@ -10348,7 +10347,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1095274225}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7168dbdda8fed441f98a08eb18d1aa3f, type: 3}
+  m_Script: {fileID: 11500000, guid: bdb84678affaa4f0ab530ba8517819e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   sceneName: Fear
@@ -15200,7 +15199,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1685249728}
   - component: {fileID: 1685249730}
-  - component: {fileID: 1685249729}
+  - component: {fileID: 1685249731}
   m_Layer: 0
   m_Name: Collider
   m_TagString: Clickable
@@ -15223,19 +15222,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 254286388}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1685249729
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1685249727}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7168dbdda8fed441f98a08eb18d1aa3f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sceneName: Anger
 --- !u!65 &1685249730
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -15257,6 +15243,19 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 350, y: 500, z: 100}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1685249731
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1685249727}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bdb84678affaa4f0ab530ba8517819e9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sceneName: Anger
 --- !u!1 &1704494897
 GameObject:
   m_ObjectHideFlags: 0
@@ -15615,7 +15614,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7168dbdda8fed441f98a08eb18d1aa3f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneName: Sadness
 --- !u!1 &1771930263
 GameObject:
   m_ObjectHideFlags: 0
@@ -16363,7 +16361,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1821138705}
   - component: {fileID: 1821138707}
-  - component: {fileID: 1821138706}
+  - component: {fileID: 1821138708}
   m_Layer: 0
   m_Name: Collider
   m_TagString: Clickable
@@ -16386,19 +16384,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1762522995}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1821138706
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1821138704}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7168dbdda8fed441f98a08eb18d1aa3f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sceneName: Sadness
 --- !u!65 &1821138707
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -16420,6 +16405,19 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 350, y: 500, z: 300}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1821138708
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1821138704}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bdb84678affaa4f0ab530ba8517819e9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sceneName: Sadness
 --- !u!1 &1832185633
 GameObject:
   m_ObjectHideFlags: 0
@@ -19028,7 +19026,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2122345611}
   - component: {fileID: 2122345613}
-  - component: {fileID: 2122345612}
+  - component: {fileID: 2122345614}
   m_Layer: 0
   m_Name: Collider
   m_TagString: Clickable
@@ -19051,19 +19049,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1196939382}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2122345612
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2122345610}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7168dbdda8fed441f98a08eb18d1aa3f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sceneName: Joy
 --- !u!65 &2122345613
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -19085,6 +19070,19 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 300, y: 1000, z: 300}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &2122345614
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2122345610}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bdb84678affaa4f0ab530ba8517819e9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sceneName: Joy
 --- !u!1 &2137570800
 GameObject:
   m_ObjectHideFlags: 0
@@ -19148,7 +19146,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2137570800}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7168dbdda8fed441f98a08eb18d1aa3f, type: 3}
+  m_Script: {fileID: 11500000, guid: bdb84678affaa4f0ab530ba8517819e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   sceneName: Disgust

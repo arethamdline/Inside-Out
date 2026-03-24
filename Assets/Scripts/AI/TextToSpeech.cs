@@ -15,18 +15,14 @@ public class TextToSpeech : MonoBehaviour
 {
     /*
     [SerializeField] private AudioSource englishAudioSource;
-    [SerializeField] private AudioSource conlangAudioSource;
 
     private async void Update()
     {
         if (OpenAI.validResponse)
         {
-            string conlang = LanguageTranslator.EnglishToConlang(OpenAI.text);
-
-            Task conlangAudioTask = AWSAudio(conlang, "AnotherVoice", conlangAudioSource);
             Task englishAudioTask = AWSAudio(OpenAI.text, "Gregory", englishAudioSource);
 
-            await Task.WhenAll(englishAudioTask, conlangAudioTask);
+            await Task.WhenAll(englishAudioTask);
 
             OpenAI.validResponse = false;
         }

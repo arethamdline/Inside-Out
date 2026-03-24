@@ -1,80 +1,62 @@
-using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.Networking;
+using UnityEngine.SceneManagement;
+using TMPro;
 
 public class OpenAI : MonoBehaviour
 {
-
-    class RequestMicrophoneData
+    [System.Serializable]
+    class RequestData
     {
         public string text_message;
-        public string vendor;
+        public string character;
     }
 
-    class RequestInitializeVendor
-    {
-        public string vendor;
-        public string item;
-    }
-
-    class ResponseVendor
+    [System.Serializable]
+    class ResponseData
     {
         public string text_message;
-        public int price_offer; 
     }
 
+    [System.Serializable]
     public class ErrorResponse
     {
-        public string error;
+        public string detail;
     }
 
-    string Base = "";
+    string BaseURL = "http://127.0.0.1:8000";
 
     public static bool validResponse = false;
     public static string text = "";
-    public static int priceOffer = 0;
+    public TextMeshProUGUI characterResponse;
 
-    private string vendorName;
+    private string characterName;
 
-    public void StartConversation(string name, string item)
+    void Start()
     {
-        string url = Base + "/";
-
-        RequestInitializeVendor data = new RequestInitializeVendor();
-        data.vendor = name;
-        data.item = item;
-
-        vendorName = name;
-
-        string jsonData = JsonUtility.ToJson(data);
-        byte[] byteData = System.Text.Encoding.UTF8.GetBytes(jsonData);
-
-        UnityWebRequest request = new UnityWebRequest(url, "POST");
-        request.uploadHandler = new UploadHandlerRaw(byteData);
-        request.downloadHandler = new DownloadHandlerBuffer();
-        request.SetRequestHeader("Content-Type", "application/json");
-
-        StartCoroutine(receive(request));
-
+        characterName = SceneManager.GetActiveScene().name;
+        Debug.Log("conversing with: " + characterName);
     }
+
 
     public void GenerateResponse(string prompt)
     {
         if (!string.IsNullOrEmpty(prompt))
         {
-            SoundAsync(prompt);
+            StartCoroutine(SendRequest(prompt));
         }
     }
 
-    void SoundAsync(string prompt)
+    IEnumerator SendRequest(string prompt)
     {
-        string url = Base + "/receive_input/";
-        RequestMicrophoneData data = new RequestMicrophoneData();
+        string url = BaseURL + "/receive_input/";
 
-        data.text_message = prompt;
-        if(vendorName != null)
-            data.vendor = vendorName;
+        RequestData data = new RequestData
+        {
+            text_message = prompt,
+            character = characterName
+        };
 
         string jsonData = JsonUtility.ToJson(data);
         byte[] byteData = System.Text.Encoding.UTF8.GetBytes(jsonData);
@@ -84,48 +66,39 @@ public class OpenAI : MonoBehaviour
         request.downloadHandler = new DownloadHandlerBuffer();
         request.SetRequestHeader("Content-Type", "application/json");
 
-        StartCoroutine(receive(request));
+        Debug.Log("sending request: " + prompt);
+        yield return request.SendWebRequest();
 
-    }
-
-    IEnumerator receive(UnityWebRequest request)
-    {
-        using (request)
+        if (request.result != UnityWebRequest.Result.Success)
         {
-            yield return request.SendWebRequest();
-
-            if (request.result != UnityWebRequest.Result.Success)
-            {
-                CatchError(request);
-                validResponse = false;
-                
-            }
-            else
-            {
-                string response = request.downloadHandler.text;
-                ResponseVendor responseData = JsonUtility.FromJson<ResponseVendor>(response);
-
-                text = responseData.text_message;
-                priceOffer = responseData.price_offer;
-
-                Debug.Log(text);
-                Debug.Log(priceOffer);
-                validResponse = true;
-            }
-        }
-    }
-
-    void CatchError(UnityWebRequest request)
-    {
-        if (request.responseCode == 400)
-        {
-            string response = request.downloadHandler.text;
-            ErrorResponse errorResponse = JsonUtility.FromJson<ErrorResponse>(response);
-            Debug.LogError("Server Error: " + errorResponse.error);
+            HandleError(request);
+            validResponse = false;
         }
         else
         {
-            Debug.Log("Error: " + request.error);
+            string response = request.downloadHandler.text;
+            ResponseData responseData = JsonUtility.FromJson<ResponseData>(response);
+
+            text = responseData.text_message;
+
+            Debug.Log("AI Response: " + text);
+            characterResponse.text = text;
+            validResponse = true;
+        }
+    }
+
+    void HandleError(UnityWebRequest request)
+    {
+        string response = request.downloadHandler.text;
+
+        try
+        {
+            ErrorResponse error = JsonUtility.FromJson<ErrorResponse>(response);
+            Debug.LogError("Server Error: " + error.detail);
+        }
+        catch
+        {
+            Debug.LogError("Request Error: " + request.error);
         }
     }
 }
