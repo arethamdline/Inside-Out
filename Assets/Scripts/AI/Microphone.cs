@@ -15,7 +15,7 @@ public class Microphone : MonoBehaviour
     public WhisperManager whisper;
     public MicrophoneRecord microphoneRecord;
 
-    public TextMeshProUGUI tmptext;
+    /*public TextMeshProUGUI tmptext;*/
     string outputText;
 
     private void Awake()
@@ -49,7 +49,7 @@ public class Microphone : MonoBehaviour
         var text = res.Result;
 
         outputText = text;
-        tmptext.text = text;
+        /*tmptext.text = text;*/
         openAI.GenerateResponse(outputText);
     }
 

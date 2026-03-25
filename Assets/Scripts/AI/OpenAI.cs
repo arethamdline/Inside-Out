@@ -29,19 +29,38 @@ public class OpenAI : MonoBehaviour
 
     public static bool validResponse = false;
     public static string text = "";
+
     public TextMeshProUGUI characterResponse;
+    public float textSpeed = 0.02f;
 
     private string characterName;
+    private Coroutine typingCoroutine;
+    private string fullText = "";
 
     void Start()
     {
         characterName = SceneManager.GetActiveScene().name;
         Debug.Log("conversing with: " + characterName);
+
+        SetCharacterColor();
     }
 
+    void Update()
+    {
+        if (Input.GetMouseButtonDown(0))
+        {
+            if (typingCoroutine != null)
+            {
+                StopCoroutine(typingCoroutine);
+                characterResponse.text = fullText;
+            }
+        }
+    }
 
     public void GenerateResponse(string prompt)
     {
+        Debug.Log("GenerateResponse CALLED with: " + prompt);
+        
         if (!string.IsNullOrEmpty(prompt))
         {
             StartCoroutine(SendRequest(prompt));
@@ -80,10 +99,59 @@ public class OpenAI : MonoBehaviour
             ResponseData responseData = JsonUtility.FromJson<ResponseData>(response);
 
             text = responseData.text_message;
+            fullText = text;
 
             Debug.Log("AI Response: " + text);
-            characterResponse.text = text;
+
+            DisplayResponse(text);
+
             validResponse = true;
+        }
+    }
+
+    void DisplayResponse(string newText)
+    {
+        if (typingCoroutine != null)
+        {
+            StopCoroutine(typingCoroutine);
+        }
+
+        typingCoroutine = StartCoroutine(TypeText(newText));
+    }
+
+    IEnumerator TypeText(string line)
+    {
+        characterResponse.text = "";
+
+        foreach (char c in line)
+        {
+            characterResponse.text += c;
+            yield return new WaitForSeconds(textSpeed);
+        }
+    }
+
+    void SetCharacterColor()
+    {
+        switch (characterName)
+        {
+            case "Joy":
+                characterResponse.color = Color.yellow;
+                break;
+            case "Anger":
+                characterResponse.color = Color.red;
+                break;
+            case "Fear":
+                characterResponse.color = new Color(0.647f, 0.392f, 0.725f);
+                break;
+            case "Disgust":
+                characterResponse.color = Color.green;
+                break;
+            case "Sadness":
+                characterResponse.color = Color.blue;
+                break;
+            default:
+                characterResponse.color = Color.white;
+                break;
         }
     }
 

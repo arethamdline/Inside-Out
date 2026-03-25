@@ -2,7 +2,7 @@ import os
 import json
 from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
-from openai import AsyncOpenAI  # ✅ Async client
+from openai import AsyncOpenAI  
 from dotenv import load_dotenv
 
 load_dotenv()
@@ -16,9 +16,9 @@ history: dict[str, list] = {}
 
 characters = {
     "Anger": "You are an honest, helpful but straightforward character.",
-    "Disgust": "You are an excitable and curious character who asks many questions.",
-    "Joy": "You are a wise character who speaks carefully.",
-    "Fear": "You are an intimidating but honest character.",   # ✅ Added comma
+    "Disgust": "You are a hepful and critical but sarcastic character. Give a 'yikes' response",
+    "Joy": "You are an optimistic and energetic character.",
+    "Fear": "You prioritises safety, and anticipative; show anxiousness and give a stuttered response",   
     "Sadness": "You are empathetic but nostalgic."
 }
 
@@ -49,7 +49,7 @@ async def call_ai(prompt: str, character: str) -> dict:
             "content": characters.get(
                 character,
                 "You are a helpful empathetic conversational character giving advice."
-            ) + ' Respond only in JSON format with fields: { "text": string }'
+            ) + ' Respond only in JSON format with fields: { "text": string }' + ' Keep response short and conversational (1-2 sentences)'
         }]
 
     history[character].append({"role": "user", "content": prompt})
