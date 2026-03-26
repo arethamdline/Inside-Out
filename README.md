@@ -2,6 +2,7 @@
 Welcome to my first project!
 
 About:
+
 An interactive AI companion inspired by Inside Out that lets users freely express their emotions, providing personalized responses for each unique situation.
 
 ✨ Technologies
@@ -16,7 +17,9 @@ An interactive AI companion inspired by Inside Out that lets users freely expres
 - Engaging and interactive interface inspired by Disney-Pixar’s Inside Out
 
 🛠 The Process
+
 I’ve always felt that it’s really important to be heard, so I wanted to create a companion that makes it easy to express emotions safely and creatively. Unity handles the interactive interface, while Python + FastAPI manages backend logic and communicates with the OpenAI API. The AI generates personalized responses depending on the user’s emotional state, making each session feel unique and meaningful.
 
 🎨 Preview
+
 https://youtu.be/C0ZTfqCKwGo?si=_geY9JFpPKbkWORT
