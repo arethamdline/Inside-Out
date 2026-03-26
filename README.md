@@ -23,3 +23,9 @@ I’ve always felt that it’s really important to be heard, so I wanted to crea
 🎨 Preview
 
 https://youtu.be/C0ZTfqCKwGo?si=_geY9JFpPKbkWORT
+
+
+
+🌱 Future Development
+
+Emotion-driven mini-activities: Users could unlock small games or music/movie recommendations tailored to their current emotional state.
