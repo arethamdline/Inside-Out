@@ -28,4 +28,4 @@ https://youtu.be/C0ZTfqCKwGo?si=_geY9JFpPKbkWORT
 
 🌱 Future Development
 
-Emotion-driven mini-activities: Users could unlock small games or music/movie recommendations tailored to their current emotional state.
+Mini-activities at Islands: Users could unlock small games or music/movie recommendations tailored to their current emotional state.
